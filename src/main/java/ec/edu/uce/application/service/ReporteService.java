@@ -4,7 +4,6 @@ import java.util.List;
 
 import ec.edu.uce.domain.model.Reporte;
 import ec.edu.uce.infraestructure.repository.ReporteRepositoryImpl;
-//import ec.edu.uce.application.service.interceptors.AuditorCreacion;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -14,7 +13,7 @@ public class ReporteService {
     @Inject
     private ReporteRepositoryImpl reporteRepositoryImpl;
     public List<Reporte> buscarTodos(){
-        return (List<Reporte>) this.reporteRepositoryImpl.findAll();
+        return (List<Reporte>) this.reporteRepositoryImpl.findAll().list();
     }
     public Reporte buscarPorId(Integer id){
         return this.reporteRepositoryImpl.findById(id);
@@ -40,8 +39,8 @@ public class ReporteService {
         reporteBase.setTitulo(reporte.getTitulo());
         reporteBase.setObservacion(reporte.getObservacion());
     }
-    public void eliminar(Reporte reporte){
-        this.reporteRepositoryImpl.delete(this.buscarPorId(reporte.getId()));
+    public void eliminar(Integer id) {
+        this.reporteRepositoryImpl.deleteById(id);
     }
     
 }
