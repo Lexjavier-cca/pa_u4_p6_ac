@@ -14,7 +14,7 @@ public class MailService {
     @Inject
     private MailRepositoryImpl mailRepositoryImpl;
     public List<Mail> buscarTodos(){
-        return (List<Mail>) this.mailRepositoryImpl.findAll();
+        return this.mailRepositoryImpl.findAll().list();
     }
     public void guardar(Mail mail){
         this.mailRepositoryImpl.persist(mail);
@@ -40,8 +40,8 @@ public class MailService {
         mailBase.setPrioridad(mail.getPrioridad());
         
     }
-    public void eliminar(Mail mail){
-        this.mailRepositoryImpl.delete(this.buscarPorId(mail.getId()));
+    public void eliminar(Integer id){
+        this.mailRepositoryImpl.delete(this.buscarPorId(id));
     }
 
 

@@ -2,6 +2,7 @@ package ec.edu.uce.application.service;
 
 import java.util.List;
 
+import ec.edu.uce.domain.model.Mail;
 import ec.edu.uce.domain.model.Reporte;
 import ec.edu.uce.infraestructure.repository.ReporteRepositoryImpl;
 //import ec.edu.uce.application.service.interceptors.AuditorCreacion;
@@ -14,7 +15,7 @@ public class ReporteService {
     @Inject
     private ReporteRepositoryImpl reporteRepositoryImpl;
     public List<Reporte> buscarTodos(){
-        return (List<Reporte>) this.reporteRepositoryImpl.findAll();
+        return this.reporteRepositoryImpl.findAll().list();
     }
     public Reporte buscarPorId(Integer id){
         return this.reporteRepositoryImpl.findById(id);
