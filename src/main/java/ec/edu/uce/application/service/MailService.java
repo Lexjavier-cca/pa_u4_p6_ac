@@ -9,6 +9,6 @@ public class MailService {
     
     public void enviarMail(String destino, String asunto, String cuerpo){
         System.out.println("id de hilo con mail" + Thread.currentThread().threadId());
-        System.out.print("Se envia un mail a " + destino);
+        System.out.print("Se envia un mail a la cuenta de destino " + destino);
     }
 }
